@@ -903,3 +903,168 @@ table.data-table {
     grid-column: span 1;
   }
 }
+
+/* =====================================================================
+   Responsive — mobile & tablet
+   ===================================================================== */
+
+/* Hamburger toggle button — hidden on desktop */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: var(--gray-700);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.menu-toggle:hover {
+  background: var(--gray-100);
+}
+
+.menu-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Overlay behind the drawer on mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.4);
+  z-index: 40;
+}
+
+/* Tablet: narrower sidebar, tighter page padding */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+  }
+  .page {
+    padding: 24px;
+  }
+  .header-search {
+    padding: 0 12px;
+  }
+}
+
+/* Mobile: sidebar becomes an off-canvas drawer */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .header {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .header-brand-name {
+    display: none;
+  }
+
+  .header-search {
+    padding: 0;
+  }
+
+  .header-search-input span {
+    display: none;
+  }
+
+  .header-search-input {
+    max-width: none;
+    width: auto;
+    justify-content: center;
+    padding: 6px;
+  }
+
+  .user-menu span {
+    display: none;
+  }
+
+  .app-shell {
+    position: relative;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 27px;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    z-index: 50;
+    width: 260px;
+    max-width: 82vw;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.12);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .app-shell.nav-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .app-shell.nav-open .sidebar-overlay {
+    display: block;
+  }
+
+  .page {
+    padding: 18px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .card-grid,
+  .settings-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table.data-table {
+    min-width: 760px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar .text-input,
+  .toolbar .select-input {
+    max-width: none;
+  }
+
+  .page-head-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .mockup-banner {
+    font-size: 10.5px;
+    padding: 6px 10px;
+  }
+}
